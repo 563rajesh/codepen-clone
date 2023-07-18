@@ -1,5 +1,11 @@
+import Home from "./components/Home";
+
 function App() {
-  return <div>Hello Rajesh</div>;
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 }
 
 export default App;
