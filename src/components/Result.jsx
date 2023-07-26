@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
 import { DataContext } from "../context/Dataprovider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Result = () => {
   // combine all three value
   const { html, css, js } = useContext(DataContext);
+  const [src, setRrc] = useState("");
 
   const srcCode = `
     <html>
@@ -13,10 +14,17 @@ const Result = () => {
     <script>${js}</script>
     </html>
   `;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setRrc(srcCode);
+    }, 1000);
+    return () => clearInterval(timeout);
+  }, [html, css, js]);
   return (
     <Box>
       <iframe
-        srcDoc={srcCode}
+        srcDoc={src}
         title="output"
         sandbox="allow-scripts"
         frameBorder={0}
