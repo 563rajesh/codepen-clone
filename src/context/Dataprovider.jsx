@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const DataContext = createContext();
+export const DataContext = createContext();
 
 const Dataprovider = ({ children }) => {
   const [html, setHtml] = useState("");
