@@ -22,6 +22,7 @@ const Heading = styled(Box)`
   background: #1d1e22;
   display: flex;
   padding: 9px 12px;
+  column-gap: 4px;
 `;
 const Header = styled(Box)`
   display: flex;
@@ -34,6 +35,7 @@ const Editor = ({ language, icon, color, value, onChange }) => {
   const [open, setOpen] = useState(true);
 
   const handleChange = (editor, data, value) => {
+    // console.log("data is", data);
     onChange(value);
   };
   return (
@@ -42,18 +44,15 @@ const Editor = ({ language, icon, color, value, onChange }) => {
         <Heading>
           <Box
             component="span"
-            style={{
-              width: "20px",
-              height: "20px",
-              display: "inline-block",
-              background: color,
-              placeContent: "center",
-              color: "#000",
-            }}
+            height={20}
+            width={20}
+            display="flex"
+            justifyContent="center"
+            sx={{ background: color, placeContent: "center", color: "#000" }}
           >
             {icon}
           </Box>
-          {language}
+          <Box>{language}</Box>
         </Heading>
         <CloseFullscreenIcon
           fontSize="small"
@@ -61,11 +60,13 @@ const Editor = ({ language, icon, color, value, onChange }) => {
           onClick={() => setOpen((prevState) => !prevState)}
         />
       </Header>
+      {/* //coding part */}
       <ControlledEditor
         className="controlled-Editor"
         value={value}
         onBeforeChange={handleChange}
         options={{
+          mode: "xml",
           theme: "material",
           lineNumbers: true,
         }}

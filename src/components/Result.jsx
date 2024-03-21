@@ -14,13 +14,14 @@ const Result = () => {
     <script>${js}</script>
     </html>
   `;
-
+  //not render during writng code
   useEffect(() => {
+    console.log("render");
     const timeout = setTimeout(() => {
       setRrc(srcCode);
     }, 1000);
     return () => clearInterval(timeout);
-  }, [html, css, js]);
+  }, [srcCode]);
   return (
     <Box>
       <iframe

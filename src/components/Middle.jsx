@@ -5,7 +5,8 @@ import { DataContext } from "../context/Dataprovider";
 const Container = styled(Box)`
   display: flex;
   background-color: #060606;
-  height: 58vh;
+  height: 62vh;
+  flex-wrap: wrap;
 `;
 
 const Middle = () => {
@@ -13,14 +14,14 @@ const Middle = () => {
   return (
     <Container>
       <Editor
-        language="Html"
+        language="HTML"
         icon="/"
         color="#ff3C41"
         value={html}
         onChange={setHtml}
       />
       <Editor
-        language="css"
+        language="CSS"
         icon="*"
         color="#0EBEFF"
         value={css}
